@@ -3,6 +3,8 @@ TabDecay
 
 A Chrome extension which bookmarks and closes tabs that have been unused for days.
 
+** This extension is not ready for use. **
+
 Why this exists
 ---------------
 
