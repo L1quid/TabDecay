@@ -13,6 +13,13 @@
     "bookmarks"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "decaying_tab.js",
+      "dt_base.js",
+      "dt_boot.js",
+      "dt_tabs.js",
+      "dt_bookmarks.js",
+      "background.js"
+    ]
   }
 }
