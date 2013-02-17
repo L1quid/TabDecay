@@ -65,7 +65,7 @@ DT.decay_tab = function(dtab)
 
 DT.tab_allowed_to_decay = function(tab)
 {
-  if (!tab || tab.pinned || tab.incognito)
+  if (!tab || tab.pinned || tab.incognito || !tab.url || tab.url == "")
     return(false);
 
   var to_ignore = new Array(
