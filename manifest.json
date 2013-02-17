@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Tab Decay",
-  "description": "Yes",
+  "description": "A Chrome extension which bookmarks and closes tabs that have been unused for days.",
   "version": "1.0",
 
   "permissions": [
