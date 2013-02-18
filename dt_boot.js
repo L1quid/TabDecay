@@ -1,6 +1,6 @@
 DT.boot = function()
 {
-  DT.storage_key = "decayingtabs-dev";// + String(chrome.windows.WINDOW_ID_CURRENT);
+  DT.storage_key = "decayingtabs-devx";// + String(chrome.windows.WINDOW_ID_CURRENT);
 
   DT.ensure_bookmark_folder_exists();
   DT.setup_event_listeners();
