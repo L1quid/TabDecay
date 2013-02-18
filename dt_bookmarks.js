@@ -1,5 +1,7 @@
 DT.create_bookmark = function(dtab)
 {
+  // save in folders by date, mafucka
+
   var bookmark = {
     parentId: DT.bookmark_folder,
     title: dtab.title,

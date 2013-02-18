@@ -1,11 +1,11 @@
 var DT = {
   bookmark_folder: null,
   storage_key: null,
-  max_lifetime: 1000 * 30,
-  decay_check_interval: 1000,
+  max_lifetime: 1000 * 60 * 60 * 24,
+  decay_check_interval: 1000 * 60,
   bookmark_folder_title: "Decayed Tabs",
   active_tabs: null,
-  
+
   decay_interval: function()
   {
     chrome.tabs.query({active: true}, function(tabs) {
