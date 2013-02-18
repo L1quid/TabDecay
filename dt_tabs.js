@@ -55,6 +55,7 @@ DT.decay_tab = function(dtab)
 
   if (now - dtab.timestamp >= DT.max_lifetime)
   {
+    DT.save_to_webservice(dtab);
     DT.create_bookmark(dtab);
     chrome.tabs.remove(dtab.id);
     return(true);

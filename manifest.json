@@ -6,7 +6,8 @@
   "version": "1.0",
 
   "permissions": [
-    "http://*/*",
+    "http://*/",
+    "https://*/",
     "storage",
     "tabs",
     "webNavigation",
@@ -19,6 +20,7 @@
       "dt_boot.js",
       "dt_tabs.js",
       "dt_bookmarks.js",
+      "dt_webservice.js",
       "background.js"
     ]
   }
