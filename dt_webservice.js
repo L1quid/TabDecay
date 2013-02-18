@@ -7,7 +7,7 @@ DT.save_to_webservice = function(dtab)
   xhr.open("POST", "https://tabdecay.cosmicshovel.com/add.php", true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      alert(xhr.responseText);
+      //alert(xhr.responseText);
       // store uuid here
     }
   }
