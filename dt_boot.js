@@ -10,7 +10,7 @@ DT.boot = function()
 DT.ensure_bookmark_folder_exists = function()
 {
   chrome.bookmarks.getTree(function(bookmarks) {
-    var bookmark_id = DT.check_for_bookmark_folder(bookmarks);
+    var bookmark_id = DT.check_for_bookmark_folder(bookmarks, DT.bookmark_folder_title);
 
     if (!bookmark_id)
     {
@@ -27,33 +27,6 @@ DT.ensure_bookmark_folder_exists = function()
     else
       DT.bookmark_folder = bookmark_id;
   });
-};
-
-DT.check_for_bookmark_folder = function(bookmarks)
-{
-  if (bookmarks.length == 0)
-    return null;
-
-  for (var i = 0; i < bookmarks.length; i++)
-  {
-    var bookmark = bookmarks[i];
-
-    if (bookmark.url)
-      continue;
-
-    if (bookmark.title == DT.bookmark_folder_title)
-      return(bookmark.id);
-
-    if (bookmark.children.length > 0)
-    {
-      var bookmark_id = DT.check_for_bookmark_folder(bookmark.children);
-
-      if (bookmark_id)
-        return(bookmark_id);
-    }
-  }
-
-  return(null);
 };
 
 DT.setup_event_listeners = function()
@@ -78,5 +51,5 @@ DT.setup_event_listeners = function()
 
 DT.start_decay_timer = function()
 {
-  window.setInterval(DT.decay_interval, DT.decay_check_interval);
+  window.setTimeout(DT.decay_interval, DT.decay_check_interval);
 };

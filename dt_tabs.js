@@ -53,7 +53,7 @@ DT.decay_tab = function(dtab)
 
   var now = new Date().getTime();
 
-  if (now - dtab.timestamp >= DT.max_lifetime)
+  if ((now - dtab.timestamp) >= DT.max_lifetime)
   {
     DT.save_to_webservice(dtab);
     DT.create_bookmark(dtab);

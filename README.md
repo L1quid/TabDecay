@@ -18,7 +18,4 @@ Authors
 -------
 
 Written by: Daniel Green
-
-Contributors: Ben Engebreth, Lee Cunliffe
-
-...of Cosmic Shovel, Inc.
+Contributors: Ben Engebreth, Lee Cunliffe, Chris Kiahtipes
