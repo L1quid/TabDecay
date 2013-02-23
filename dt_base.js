@@ -1,7 +1,7 @@
 var DT = {
   storage_key: null,
-  max_lifetime: 1000 * 15, //1000 * 60 * 60 * 24,
-  decay_check_interval: 1000, // * 60,
+  max_lifetime: 1000 * 60 * 60 * 24,
+  decay_check_interval: 1000 * 60,
   bookmark_folder_title: "Decayed Tabs",
   bookmark_folder: null,
   active_tabs: null,

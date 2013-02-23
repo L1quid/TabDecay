@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Tab Decay Settings</title>
+    <link rel="stylesheet" type="text/css" href="chrome-bootstrap.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Tab Decay Settings</h1>
+      <form onsubmit="dt_save_options(); return(false);">
+        <table>
+          <tr>
+            <td>
+              <p>Bookmark and close tabs every:</p>
+            </td>
+            <td>
+              <input name="decay_value" id="decay_value" size="5" type="text">
+              <select name="decay_interval" id="decay_interval">
+                <option value="60">Minutes</option>
+                <option value="3600">Hours</option>
+                <option value="86400">Days</option>
+                <option value="604800">Weeks</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button>Save Settings</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>

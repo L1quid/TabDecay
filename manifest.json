@@ -4,6 +4,8 @@
   "name": "Tab Decay",
   "description": "A Chrome extension which bookmarks and closes tabs that have been unused for days.",
   "version": "1.0",
+  
+  "options_page": "options.html",
 
   "permissions": [
     "http://*/",
