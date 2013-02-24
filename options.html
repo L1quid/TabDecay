@@ -8,12 +8,16 @@
   <body style="padding: 1em;">
     <div class="content">
       <h1>Tab Decay Settings</h1>
+      <p>
+        <input type="checkbox" name="dt_enabled" id="dt_enabled"> <label for="dt_enabled">Enable Tab Decay</label>
+      </p>
       <h3>Bookmarking</h3>
       <section>
         <div>
           Bookmark and close tabs unused for
           <input name="dt_decay_value" id="dt_decay_value" size="5" type="text">
           <select name="dt_decay_interval" id="dt_decay_interval">
+            <option value="1" id="dt_decay_interval_1">Seconds</option>
             <option value="60" id="dt_decay_interval_60">Minutes</option>
             <option value="3600" id="dt_decay_interval_3600">Hours</option>
             <option value="86400" id="dt_decay_interval_86400">Days</option>
@@ -23,9 +27,13 @@
           <small>Tab Decay will save your bookmarks in dated folders inside Other Bookmarks -> Tab Decay.</small>
         </div>
         <div class="checkbox">
-          <input type="checkbox" name="dt_archive" id="dt_archive"> <label for="dt_archive">Archive pages using Tab Decay web service?</label>
+          <input type="checkbox" name="dt_archive_enabled" id="dt_archive_enabled"> <label for="dt_archive_enabled">Archive pages using Tab Decay web service</label>
           <br />
-          <small>The web service saves screenshots and a full HTML/CSS/JS/image archive.</small>
+          <small>
+            Saves screenshots and a full HTML/CSS/JS/image archive.  Uses SSL for transport but is not encrypted on server; purely experimental at the moment.  Your uploads are only visible to you (unless you share the URL below).
+            <br />
+            <a href="#" id="dt_archive_user_link" target="_blank">View your uploads</a>
+          </small>
         </div>
       </section>
       <p>

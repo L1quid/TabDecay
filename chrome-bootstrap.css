@@ -4,6 +4,13 @@ label
   cursor: pointer;
 }
 
+small
+{
+  color: #999;
+}
+
+/************************** HAX *****************************/
+
 body {
   font-family: 'Chrome Droid Sans', 'Droid Sans Fallback', 'Lucida Grande', sans-serif;
   font-size: 75%;

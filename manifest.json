@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Tab Decay",
-  "description": "A Chrome extension which bookmarks and closes tabs that have been unused for days.",
+  "description": "Automatically bookmarks and closes unused tabs.",
   "version": "1.0",
 
   "options_page": "options.html",
@@ -17,12 +17,14 @@
   ],
   "background": {
     "scripts": [
+      "sha1-min.js",
       "decaying_tab.js",
       "dt_base.js",
       "dt_boot.js",
       "dt_tabs.js",
       "dt_bookmarks.js",
       "dt_webservice.js",
+      "dt_debug.js",
       "background.js"
     ]
   },
