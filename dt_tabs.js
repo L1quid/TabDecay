@@ -6,14 +6,14 @@ DT.store_tab_list = function(list)
     }
     return value;
   });
-  
+
   DT.set_setting(DT.storage_key("tabs"), list);
 };
 
 DT.get_tab_list = function()
 {
   var list = DT.get_setting(DT.storage_key("tabs"), "{}");
-  
+
   list = JSON.parse(list, function (key, value) {
     var type;
     if (value && typeof value === 'object') {
@@ -24,7 +24,7 @@ DT.get_tab_list = function()
     }
     return value;
   });
-  
+
   return(list);
 };
 
@@ -52,16 +52,42 @@ DT.decay_tab = function(dtab)
   if ((now - dtab.timestamp) >= DT.max_lifetime)
   {
     DT.dmsg("Decaying...", dtab);
-    DT.create_bookmark(dtab);
-    DT.save_to_webservice(dtab);
+    DT.save_tab(dtab);
     DT.close_tab(dtab);
-    
+
     return(true);
   }
-  
+
   DT.dmsg("Not decaying", dtab);
 
   return(false);
+};
+
+DT.save_current_tab = function(dtab)
+{
+  chrome.tabs.query({active: true}, function(tabs) {
+    var decayed_tabs = DT.get_tab_list();
+
+    for (var i = 0; i < tabs.length; i++)
+    {
+      var dtab = decayed_tabs[tabs[i].id];
+
+      if (!dtab)
+      {
+        alert("Active tab not found in dtabs; save_current_tab");
+        continue;
+      }
+
+      DT.save_tab(dtab);
+    }
+  });
+};
+
+DT.save_tab = function(dtab)
+{
+  DT.dmsg("Saving tab...", dtab);
+  DT.create_bookmark(dtab);
+  DT.save_to_webservice(dtab);
 };
 
 DT.tab_allowed_to_decay = function(tab)
@@ -83,7 +109,7 @@ DT.tab_allowed_to_decay = function(tab)
     if (tab.url.indexOf(ignore) >= 0)
       return(false);
   }
-  
+
   // check white list here
 
   return(true);
@@ -93,7 +119,7 @@ DT.update_tab = function(tab)
 {
   if (!DT.enabled || !DT.tab_allowed_to_decay(tab))
     return;
-  
+
   var decayed_tabs = DT.get_tab_list();
   var dtab = DT.create_decaying_tab(tab);
   decayed_tabs[dtab.id] = dtab;
