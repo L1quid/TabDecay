@@ -6,6 +6,7 @@ var DT = {
     "decay_interval": "dt_decay_interval",
     "archive_enabled": "dt_archive_enabled",
     "user_id": "dt_uid",
+    "archived_tabs": "dt_archived_tabs",
   },
   decay_check_interval: 1000 * 5,
   bookmark_folder_title: "Decayed Tabs",
