@@ -65,19 +65,16 @@ DT.decay_tab = function(dtab)
 
 DT.save_current_tab = function(dtab)
 {
-  chrome.tabs.query({active: true}, function(tabs) {
+  chrome.tabs.query({active: true, windowType: "normal"}, function(tabs) {
     var decayed_tabs = DT.get_tab_list();
 
     for (var i = 0; i < tabs.length; i++)
     {
-      var dtab = decayed_tabs[tabs[i].id];
-
-      if (!dtab)
-      {
-        alert("Active tab not found in dtabs; save_current_tab");
+      if (!DT.url_allowed(tabs[i].url))
         continue;
-      }
 
+      var dtab = decayed_tabs[tabs[i].id];
+      dtab = tabs[i];
       DT.save_tab(dtab);
     }
   });
@@ -95,6 +92,16 @@ DT.tab_allowed_to_decay = function(tab)
   if (!tab || tab.pinned || tab.incognito || !tab.url || tab.url == "")
     return(false);
 
+  if (!DT.url_allowed(tab.url))
+    return(false);
+
+  // check black list here
+
+  return(true);
+};
+
+DT.url_allowed = function(url)
+{
   var to_ignore = new Array(
     "chrome-devtools://",
     "chrome-extension://",
@@ -106,11 +113,9 @@ DT.tab_allowed_to_decay = function(tab)
   {
     var ignore = to_ignore[i];
 
-    if (tab.url.indexOf(ignore) >= 0)
+    if (url.indexOf(ignore) >= 0)
       return(false);
   }
-
-  // check white list here
 
   return(true);
 };

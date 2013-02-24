@@ -8,7 +8,7 @@ DT.create_bookmark = function(dtab)
     url: dtab.url,
   };
 
-  var bookmark_folder_title = new Date(dtab.timestamp).toLocaleDateString();
+  var bookmark_folder_title = dtab.timestamp ? new Date(dtab.timestamp).toLocaleDateString() : "On-demand";
 
   chrome.bookmarks.getTree(function(bookmarks) {
     var bookmark_id = DT.check_for_bookmark_folder(bookmarks, bookmark_folder_title);
@@ -22,25 +22,45 @@ DT.create_bookmark = function(dtab)
 
       chrome.bookmarks.create(bookmark_folder, function(new_bookmark) {
         bookmark.parentId = new_bookmark.id;
+
+        chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
+          for (var i = 0; i < bookmarks.length; i++)
+          {
+            for (var j = 0; j < bookmarks[i].children.length; j++)
+            {
+              if (bookmarks[i].children[j].url == bookmark.url)
+                return;
+            }
+          }
+
+          chrome.bookmarks.create(bookmark);
+        });
+
+        delete bookmark;
       });
 
       delete bookmark_folder;
     }
     else
-      bookmark.parentId = bookmark_id;
-  });
-
-  chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
-    for (var i = 0; i < bookmarks.length; i++)
     {
-      if (bookmarks[i].url == bookmark.url)
-        return;
+      bookmark.parentId = bookmark_id;
+
+      chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
+        for (var i = 0; i < bookmarks.length; i++)
+        {
+          for (var j = 0; j < bookmarks[i].children.length; j++)
+          {
+            if (bookmarks[i].children[j].url == bookmark.url)
+              return;
+          }
+        }
+
+        chrome.bookmarks.create(bookmark);
+      });
+
+      delete bookmark;
     }
-
-    chrome.bookmarks.create(bookmark);
   });
-
-  delete bookmark;
 };
 
 DT.check_for_bookmark_folder = function(bookmarks, title)
