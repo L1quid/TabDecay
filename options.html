@@ -2,33 +2,35 @@
   <head>
     <title>Tab Decay Settings</title>
     <link rel="stylesheet" type="text/css" href="chrome-bootstrap.css" />
+    <script src="options.js"></script>
   </head>
-  <body>
+  <body style="padding: 1em;">
     <div class="content">
       <h1>Tab Decay Settings</h1>
-      <form onsubmit="dt_save_options(); return(false);">
-        <table>
-          <tr>
-            <td>
-              <p>Bookmark and close tabs every:</p>
-            </td>
-            <td>
-              <input name="decay_value" id="decay_value" size="5" type="text">
-              <select name="decay_interval" id="decay_interval">
-                <option value="60">Minutes</option>
-                <option value="3600">Hours</option>
-                <option value="86400">Days</option>
-                <option value="604800">Weeks</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" align="center">
-              <button>Save Settings</button>
-            </td>
-          </tr>
-        </table>
-      </form>
+      <h3>Bookmarking</h3>
+      <section>
+        <div>
+          Bookmark and close tabs unused for
+          <input name="decay_value" id="decay_value" size="5" type="text">
+          <select name="decay_interval" id="decay_interval">
+            <option value="60">Minutes</option>
+            <option value="3600">Hours</option>
+            <option value="86400">Days</option>
+            <option value="604800">Weeks</option>
+          </select>
+          <br />
+          <small>Tab Decay will save your bookmarks in dated folders inside Other Bookmarks -> Tab Decay.</small>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="dt_archive" id="dt_archive"> <label for="dt_archive">Archive pages using Tab Decay web service?</label>
+          <br />
+          <small>The web service saves screenshots and a full HTML/CSS/JS/image archive.</small>
+        </div>
+      </section>
+      <p>
+        <button id="dt_save_settings">Save</button>
+        <span id="dt_save_status"></span>
+      </p>
     </div>
   </body>
 </html>

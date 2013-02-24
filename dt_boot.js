@@ -4,7 +4,7 @@ DT.boot = function()
 
   DT.ensure_bookmark_folder_exists();
   DT.setup_event_listeners();
-  DT.start_decay_timer();
+  //DT.start_decay_timer();
 };
 
 DT.ensure_bookmark_folder_exists = function()
@@ -51,5 +51,8 @@ DT.setup_event_listeners = function()
 
 DT.start_decay_timer = function()
 {
-  window.setTimeout(DT.decay_interval, DT.decay_check_interval);
+  if (DT.timeout_id)
+    window.clearTimeout(DT.timeout_id);
+
+  DT.timeout_id = window.setTimeout(DT.decay_interval, DT.decay_check_interval);
 };

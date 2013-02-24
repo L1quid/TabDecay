@@ -1,3 +1,9 @@
+/************************** HAX *****************************/
+label
+{
+  cursor: pointer;
+}
+
 body {
   font-family: 'Chrome Droid Sans', 'Droid Sans Fallback', 'Lucida Grande', sans-serif;
   font-size: 75%;
@@ -50,8 +56,8 @@ h4 small {
 }
 h1 {
   -webkit-margin-after: 1em;
-  -webkit-margin-before: 21px;
-  -webkit-margin-start: 23px;
+  /*-webkit-margin-before: 21px;
+  -webkit-margin-start: 23px;*/
   height: 18px;
   color: #5C6166;
   font-size: 18px;

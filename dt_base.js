@@ -5,6 +5,7 @@ var DT = {
   bookmark_folder_title: "Decayed Tabs",
   bookmark_folder: null,
   active_tabs: null,
+  timeout_id: null,
 
   decay_interval: function()
   {
