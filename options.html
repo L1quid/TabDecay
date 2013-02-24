@@ -2,6 +2,7 @@
   <head>
     <title>Tab Decay Settings</title>
     <link rel="stylesheet" type="text/css" href="chrome-bootstrap.css" />
+    <script src="shared.js"></script>
     <script src="options.js"></script>
   </head>
   <body style="padding: 1em;">
@@ -11,12 +12,12 @@
       <section>
         <div>
           Bookmark and close tabs unused for
-          <input name="decay_value" id="decay_value" size="5" type="text">
-          <select name="decay_interval" id="decay_interval">
-            <option value="60">Minutes</option>
-            <option value="3600">Hours</option>
-            <option value="86400">Days</option>
-            <option value="604800">Weeks</option>
+          <input name="dt_decay_value" id="dt_decay_value" size="5" type="text">
+          <select name="dt_decay_interval" id="dt_decay_interval">
+            <option value="60" id="dt_decay_interval_60">Minutes</option>
+            <option value="3600" id="dt_decay_interval_3600">Hours</option>
+            <option value="86400" id="dt_decay_interval_86400">Days</option>
+            <option value="604800" id="dt_decay_interval_604800">Weeks</option>
           </select>
           <br />
           <small>Tab Decay will save your bookmarks in dated folders inside Other Bookmarks -> Tab Decay.</small>

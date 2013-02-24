@@ -1,18 +1,3 @@
-function dt_get_setting(key, def_val)
-{
-  var ret = localStorage[key];
-
-  if (ret == null)
-    ret = def_val;
-
-  return(ret);
-}
-
-function dt_set_setting(key, val)
-{
-  localStorage[key] = val;
-}
-
 function dt_show_options()
 {
   chrome.tabs.create({url: "options.html"});
