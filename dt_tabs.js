@@ -66,16 +66,12 @@ DT.decay_tab = function(dtab)
 DT.save_current_tab = function(dtab)
 {
   chrome.tabs.query({active: true, windowType: "normal"}, function(tabs) {
-    var decayed_tabs = DT.get_tab_list();
-
     for (var i = 0; i < tabs.length; i++)
     {
       if (!DT.url_allowed(tabs[i].url))
         continue;
 
-      var dtab = decayed_tabs[tabs[i].id];
-      dtab = tabs[i];
-      DT.save_tab(dtab);
+      DT.save_tab(tabs[i]);
     }
   });
 };

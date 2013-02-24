@@ -18,6 +18,7 @@ function dt_archive_page_now()
 {
   var DT = chrome.extension.getBackgroundPage().DT;
   DT.save_current_tab();
+  window.close();
 }
 
 function dt_popup_init()

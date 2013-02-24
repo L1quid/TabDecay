@@ -22,44 +22,32 @@ DT.create_bookmark = function(dtab)
 
       chrome.bookmarks.create(bookmark_folder, function(new_bookmark) {
         bookmark.parentId = new_bookmark.id;
-
-        chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
-          for (var i = 0; i < bookmarks.length; i++)
-          {
-            for (var j = 0; j < bookmarks[i].children.length; j++)
-            {
-              if (bookmarks[i].children[j].url == bookmark.url)
-                return;
-            }
-          }
-
-          chrome.bookmarks.create(bookmark);
-        });
-
-        delete bookmark;
+        DT.create_bookmark_if_not_exists(bookmark);
+        delete bookmark_folder;
       });
-
-      delete bookmark_folder;
     }
     else
     {
       bookmark.parentId = bookmark_id;
-
-      chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
-        for (var i = 0; i < bookmarks.length; i++)
-        {
-          for (var j = 0; j < bookmarks[i].children.length; j++)
-          {
-            if (bookmarks[i].children[j].url == bookmark.url)
-              return;
-          }
-        }
-
-        chrome.bookmarks.create(bookmark);
-      });
-
-      delete bookmark;
+      DT.create_bookmark_if_not_exists(bookmark);
     }
+  });
+};
+
+DT.create_bookmark_if_not_exists = function(bookmark)
+{
+  chrome.bookmarks.getSubTree(bookmark.parentId, function(bookmarks) {
+    for (var i = 0; i < bookmarks.length; i++)
+    {
+      for (var j = 0; j < bookmarks[i].children.length; j++)
+      {
+        if (bookmarks[i].children[j].url == bookmark.url)
+          return;
+      }
+    }
+
+    chrome.bookmarks.create(bookmark);
+    delete bookmark;
   });
 };
 
