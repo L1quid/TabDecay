@@ -25,7 +25,7 @@ DT.save_to_webservice = function(dtab)
       //alert(xhr.responseText);
       // store uuid here
       var list = DT.get_archived_tab_list();
-      list.push(xhr.responseText);
+      list.push(xhr.responseText.replace(/\s+/g, ''));
       DT.store_archived_tab_list(list);
       DT.dmsg("Saved to web service", dtab);
     }

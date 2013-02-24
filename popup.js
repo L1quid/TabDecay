@@ -31,9 +31,9 @@ function dt_popup_init()
   var msg = "Bookmark";
 
   if (DT.archive_enabled)
-    msg += " and archive";
+    msg += " + Archive";
 
-  msg += " this page";
+  msg += " This Page";
   archive_link.innerText = msg;
 
   chrome.tabs.query({active: true, windowType: "normal"}, function(tabs) {
@@ -48,6 +48,13 @@ function dt_popup_init()
       }
     }
   });
+  
+  var view_archive = document.querySelector("#dt_view_archives");
+  
+  if (DT.user_id)
+    view_archive.href = "https://tabdecay.cosmicshovel.com/list.php?uid=" + DT.user_id;
+  else
+    view_archive.style.display = "none";
 }
 
 document.addEventListener('DOMContentLoaded', dt_popup_init);
