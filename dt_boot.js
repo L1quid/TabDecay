@@ -20,7 +20,7 @@ DT.load_settings = function()
   var di = parseInt(DT.get_setting(DT.storage_key("decay_interval"), DT.def_decay_interval));
   DT.max_lifetime = 1000 * dv * di;
   DT.encryption_enabled = DT.get_setting(DT.storage_key("encryption_enabled"), DT.encryption_enabled);
-  DT.encryption_key = DT.get_setting(DT.storage_key("encryption_key"), DT.encryption_key);
+  DT.encryption_key = DT.get_encryption_key();
   DT.start_decay_timer();
 };
 

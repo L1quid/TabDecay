@@ -30,6 +30,12 @@
       "background.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/", "https://*/"],
+      "js": ["content.js"]
+    }
+  ],
 
   "icons": { "128": "icon38.png", "48": "icon38.png", "16": "icon19.png" },
 

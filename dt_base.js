@@ -54,6 +54,39 @@ var DT = {
   {
     localStorage[key] = val;
   },
+  
+  get_setting_array: function(key)
+  {
+    var list = DT.get_setting(key, "[]");
+    
+    list = JSON.parse(list, function(key, value) {
+      var type;
+      
+      if (value && typeof value === 'object')
+      {
+        type = value.type;
+        
+        if (typeof type === 'string' && typeof window[type] === 'function')
+          return(new (window[type])(value));
+      }
+      
+      return(value);
+    });
+
+    return(list);
+  },
+  
+  set_setting_array: function(key, list)
+  {
+    list = JSON.stringify(list, function (k, value) {
+      if (typeof value === 'number' && !isFinite(value)) {
+          return String(value);
+      }
+      return value;
+    });
+  
+    DT.set_setting(key, list);
+  },
 
   decay_interval: function()
   {

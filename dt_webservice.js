@@ -14,10 +14,35 @@ DT.save_to_webservice = function(dtab)
     return;
   }
   
+  if (DT.should_encrypt())
+  {
+    chrome.tabs.sendRequest(dtab.id, {action : 'dt_get_source'}, function(source) {
+      DT.finish_save_to_webservice(uid, dtab, source, true);
+    });
+  }
+  else
+    DT.finish_save_to_webservice(uid, dtab, null, false);
+};
+
+DT.finish_save_to_webservice = function(uid, dtab, source, encrypt)
+{
   var xhr = new XMLHttpRequest();
-  var params = "url=" + encodeURIComponent(dtab.url);
-  params += "&title=" + encodeURIComponent(dtab.title);
-  params += "&uid=" + encodeURIComponent(uid);
+  var params;
+  
+  if (encrypt)
+  {
+    params = "enc=1&url=" + encodeURIComponent(DT.encrypt(dtab.url));
+    params += "&title=" + encodeURIComponent(DT.encrypt(dtab.title));
+    params += "&uid=" + encodeURIComponent(DT.encrypt(uid));
+    params += "&src=" + encodeURIComponent(DT.encrypt(source || ""));
+  }
+  else
+  {
+    params = "enc=0&url=" + encodeURIComponent(dtab.url);
+    params += "&title=" + encodeURIComponent(dtab.title);
+    params += "&uid=" + encodeURIComponent(uid);
+    params += "&src=" + encodeURIComponent(source || "");
+  }
   
   xhr.open("POST", "https://tabdecay.cosmicshovel.com/add.php", true);
   xhr.onreadystatechange = function() {
@@ -36,30 +61,20 @@ DT.save_to_webservice = function(dtab)
 
 DT.store_archived_tab_list = function(list)
 {
-  list = JSON.stringify(list, function (key, value) {
-    if (typeof value === 'number' && !isFinite(value)) {
-        return String(value);
-    }
-    return value;
-  });
-
-  DT.set_setting(DT.storage_key("archived_tabs"), list);
+  DT.set_setting_array(DT.storage_key("archived_tabs"), list);
 };
 
 DT.get_archived_tab_list = function()
 {
-  var list = DT.get_setting(DT.storage_key("archived_tabs"), "[]");
+  return(DT.get_setting_array(DT.storage_key("archived_tabs")));
+};
 
-  list = JSON.parse(list, function (key, value) {
-    var type;
-    if (value && typeof value === 'object') {
-        type = value.type;
-        if (typeof type === 'string' && typeof window[type] === 'function') {
-            return new (window[type])(value);
-        }
-    }
-    return value;
-  });
+DT.store_encryption_key = function(list)
+{
+  DT.set_setting_array(DT.storage_key("encryption_key"), list);
+};
 
-  return(list);
+DT.get_encryption_key = function()
+{
+  return(DT.get_setting_array(DT.storage_key("encryption_key")));
 };

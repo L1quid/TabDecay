@@ -18,7 +18,7 @@ function dt_save_options()
   dt_set_setting(DT.storage_key("decay_interval"), interval_select.options[idx].value);
   dt_set_setting(DT.storage_key("archive_enabled"), document.querySelector("#dt_archive_enabled").checked);
   dt_set_setting(DT.storage_key("enabled"), document.querySelector("#dt_enabled").checked);
-  dt_set_setting(DT.storage_key("encryption_key"), DT.encryption_key);
+  DT.store_encryption_key(DT.encryption_key);
   dt_set_setting(DT.storage_key("encryption_enabled"), document.querySelector("#dt_archive_encryption_enabled").checked);
   
   dt_get().load_settings();
