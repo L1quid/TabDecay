@@ -26,6 +26,9 @@
           <br />
           <small>Tab Decay will save your bookmarks in dated folders inside Other Bookmarks -> Tab Decay.</small>
         </div>
+        <div class="checkbox">
+          <p>Future option: Close oldest tab after N open tabs.</p>
+        </div>
       </section>
       <h3>Archival (<a href="#" id="dt_archive_user_link" target="_blank">view your archive</a>)</h3>
       <section>
@@ -41,7 +44,16 @@
         <p>
           Enable encryption if you don't want any record on our server of the page's URL or contents when archiving pages.  All encryption and decryption occurs on your computer.
         </p>
-        
+        <div class="checkbox">
+          <input type="checkbox" name="dt_archive_encryption_enabled" id="dt_archive_encryption_enabled"> <label for="dt_archive_encryption_enabled">Encrypt archived tabs</label>
+        </div>
+        <div id="dt_archive_encryption_set_pass">
+          Password: <input type="text" name="dt_archive_encryption_pass" id="dt_archive_encryption_pass"> <span id="dt_archive_encryption_pass_status"></span> <button id="dt_archive_encryption_pass_save">Generate Key</button> <button id="dt_archive_encryption_pass_cancel">Cancel</button>
+        </div>
+        <div id="dt_archive_encryption_pass_exists">
+          <p>You have setup your encryption key.  Any changes will make existing encrypted data unreadable, so it's best to leave this alone unless you're sure you want to start over.</p>
+          <p><button id="dt_archive_encryption_change_pass">Change Password</button></p>
+        </div>
       </section>
       <p>
         <button id="dt_save_settings">Save</button>

@@ -7,6 +7,8 @@ var DT = {
     "archive_enabled": "dt_archive_enabled",
     "user_id": "dt_uid",
     "archived_tabs": "dt_archived_tabs",
+    "encryption_key": "dt_encryption_key",
+    "encryption_enabled": "dt_encryption_enabled",
   },
   decay_check_interval: 1000 * 5,
   bookmark_folder_title: "Decayed Tabs",
@@ -18,12 +20,15 @@ var DT = {
   enabled: true, // dt_enabled
   max_lifetime: 1000 * 60 * 60 * 24, // dt_decay_value * dt_decay_interval * 1000
   archive_enabled: false, // dt_archive_enabled
+  encryption_key: null,
+  encryption_enabled: false,
 
   // default settings
   def_enabled: true,
   def_decay_value: 2,
   def_decay_interval: 86400,
   def_archive_enabled: false,
+  def_encryption_enabled: false,
 
   storage_key: function(key)
   {

@@ -30,7 +30,7 @@ DT.save_to_webservice = function(dtab)
       DT.dmsg("Saved to web service", dtab);
     }
   }
-  xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send(params);
 };
 

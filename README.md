@@ -1,21 +1,30 @@
 Tab Decay
 ========
 
-A Chrome extension which bookmarks and closes tabs that have been unused for days.  A supporting web service saves HTML and PNG copies of the closed web pages, providing an archive in case the pages disappear from the web.
+A Chrome extension which bookmarks and closes unused tabs.
 
-Tab Decay does not close pinned tabs, nor those hosting pages provided by the browser ("chrome://" etc).
+Decay
+-----
 
-** This extension is not ready for use. **
+Users define a time period, and tabs which are unused for that time period are then decayed (bookmarked, archived, closed).
 
-Why this exists
----------------
+Bookmarking
+-----------
 
-I often open tabs with the intention of going back to them, be it for casual reading, research, or coding reference.  A lot of the time, these tabs are forgotten about and, since I rarely close my browser, this results in a big mess o' tabs which eventually can't even show their titles or favicons.  Thus the idea of decaying tabs was born.
+Saves bookmarks in folders by date of last activity.  Open a URL on 2013-01-01; when closed by Tab Decay, the bookmark is placed in Decayed Tabs -> 2013-01-01.
 
-Unused tabs will now be bookmarked and closed automatically every couple of days, ensuring I don't lose any pages I might want to go back and read while freeing up space for more tabs!
+Archival
+--------
+
+The Tab Decay web service provides a backend for storing HTML archives and PNG screenshots of pages, ensuring users have access to pages even if the original site goes offline.
+
+Exceptions
+----------
+
+Tab Decay does not act on Chrome system and pinned tabs.  A whitelist feature is also planned.
 
 Authors
 -------
 
 Written by: Daniel Green
-Contributors: Ben Engebreth, Lee Cunliffe, Chris Kiahtipes
+Contributors: Ben Engebreth, Lee Cunliffe, Chris Kiahtipes, Joshua Teitelbaum

@@ -16,14 +16,14 @@ function dt_toggle_enabled(event)
 
 function dt_archive_page_now()
 {
-  var DT = chrome.extension.getBackgroundPage().DT;
+  var DT = dt_get();
   DT.save_current_tab();
   window.close();
 }
 
 function dt_popup_init()
 {
-  var DT = chrome.extension.getBackgroundPage().DT;
+  var DT = dt_get();
   document.querySelector('#dt_options_link').addEventListener('click', dt_show_options);
   var archive_link = document.querySelector("#dt_archive_page_now_link");
   archive_link.addEventListener("click", dt_archive_page_now);
