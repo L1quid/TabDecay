@@ -8,6 +8,8 @@ Decay
 
 Users select a length of time, and tabs which are unused for that long are then decayed (bookmarked, archived, closed).
 
+In addition to idle time, a constraint on the maximum number of allowed open tabs is planned.  Once the max. is hit, the oldest tab is closed.
+
 Bookmarking
 -----------
 
@@ -16,7 +18,7 @@ Saves bookmarks in folders by date of last activity.  Open a URL on 2013-01-01; 
 Archival
 --------
 
-The Tab Decay web service provides a backend for storing HTML archives and PNG screenshots of pages, ensuring users have access to pages even if the original site goes offline.
+An optional web service provides the backend for storing HTML archives and PNG screenshots of pages, ensuring users have access to pages even if the original site goes offline.  Users have the option of enabling client-side encryption, which prevents the web service from having any information about a user's bookmarks.
 
 Exceptions
 ----------
