@@ -6,7 +6,7 @@ A Chrome extension which bookmarks and closes unused tabs.
 Decay
 -----
 
-Users define a time period, and tabs which are unused for that time period are then decayed (bookmarked, archived, closed).
+Users select a length of time, and tabs which are unused for that long are then decayed (bookmarked, archived, closed).
 
 Bookmarking
 -----------
