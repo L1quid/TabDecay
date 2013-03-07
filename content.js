@@ -1,4 +1,4 @@
-chrome.extension.onRequest.addListener(function(request, sender, callback)
+chrome.extension.onMessage.addListener(function(request, sender, callback)
 {
   if (request.action == 'dt_get_source')
   {

@@ -16,7 +16,7 @@ DT.save_to_webservice = function(dtab)
   
   if (DT.should_encrypt())
   {
-    chrome.tabs.sendRequest(dtab.id, {action : 'dt_get_source'}, function(source) {
+    chrome.tabs.sendMessage(dtab.id, {action : 'dt_get_source'}, function(source) {
       DT.finish_save_to_webservice(uid, dtab, source, true);
     });
   }
@@ -33,7 +33,7 @@ DT.finish_save_to_webservice = function(uid, dtab, source, encrypt)
   {
     params = "enc=1&url=" + encodeURIComponent(DT.encrypt(dtab.url));
     params += "&title=" + encodeURIComponent(DT.encrypt(dtab.title));
-    params += "&uid=" + encodeURIComponent(DT.encrypt(uid));
+    params += "&uid=" + encodeURIComponent(uid);
     params += "&src=" + encodeURIComponent(DT.encrypt(source || ""));
   }
   else

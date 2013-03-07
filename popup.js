@@ -50,11 +50,18 @@ function dt_popup_init()
   });
   
   var view_archive = document.querySelector("#dt_view_archives");
+  var view_enc_archive = document.querySelector("#dt_view_encrypted_archives");
   
   if (DT.user_id)
+  {
     view_archive.href = "https://tabdecay.cosmicshovel.com/list.php?uid=" + DT.user_id;
+    view_enc_archive.href = chrome.extension.getURL("/encrypted_archives.html");
+  }
   else
+  {
     view_archive.style.display = "none";
+    view_enc_archive.style.display = "none";
+  }
 }
 
 document.addEventListener('DOMContentLoaded', dt_popup_init);

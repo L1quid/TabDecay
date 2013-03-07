@@ -44,39 +44,12 @@ DT.encrypt = function(plaintext)
   ct = sjcl.encrypt(key, plaintext, p, rp).replace(/,/g,",\n");
   
   return(ct);
-  /*
-  var v = form.get(), iv = v.iv, password = v.password, key = v.key, adata = v.adata, aes, plaintext=v.plaintext, rp = {}, ct, p;
-  
-  if (plaintext === '' && v.ciphertext.length) { return; }
-  if (key.length == 0 && password.length == 0) {
-    error("need a password or key!");
-    return;
-  }
-  
-  p = { adata:v.adata,
-        iter:v.iter,
-        mode:v.mode,
-        ts:parseInt(v.tag),
-        ks:parseInt(v.keysize) };
-  if (!v.freshiv || !usedIvs[v.iv]) { p.iv = v.iv; }
-  if (!v.freshsalt || !usedSalts[v.salt]) { p.salt = v.salt; }
-  ct = sjcl.encrypt(password || key, plaintext, p, rp).replace(/,/g,",\n");
+};
 
-  v.iv = rp.iv;
-  usedIvs[rp.iv] = 1;
-  if (rp.salt) {
-    v.salt = rp.salt;
-    usedSalts[rp.salt] = 1;
-  }
-  v.key = rp.key;
+DT.decrypt = function(pkg)
+{
+  var rp = {};
+  var plaintext = sjcl.decrypt(DT.encryption_key, pkg, {}, rp);
   
-  if (v.json) {
-    v.ciphertext = ct;
-    v.adata = '';
-  } else {
-    v.ciphertext = ct.match(/"ct":"([^"]*)"/)[1]; //"
-  }
-  
-  v.plaintext = '';
-  */
+  return(plaintext);
 };
