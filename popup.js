@@ -62,6 +62,9 @@ function dt_popup_init()
     view_archive.style.display = "none";
     view_enc_archive.style.display = "none";
   }
+  
+  if (!DT.has_valid_encryption_key())
+    view_enc_archive.style.display = "none";
 }
 
 document.addEventListener('DOMContentLoaded', dt_popup_init);
