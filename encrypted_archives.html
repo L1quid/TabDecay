@@ -4,12 +4,24 @@
     <link rel="stylesheet" type="text/css" href="chrome-bootstrap.css" />
     <script src="shared.js"></script>
     <script src="encrypted_archives.js"></script>
+    <style>
+    li { margin-bottom: 1em; }
+    li input[type='checkbox'] { margin-right: 0.5em; }
+    </style>
   </head>
-  <body style="width: 300px; height: 200px; padding: 1em;">
+  <body style="width: 600px; padding: 1em;">
     <div class="content">
       <h1>Encrypted Archives</h1>
       <div id="dt_enc_status"></div>
-      <div id="dt_enc_content"></div>
+      <div id="dt_enc_content">
+        <form method="post" action="https://tabdecay.cosmicshovel.com/rm.php" id="dt_enc_form">
+          <input type="hidden" name="uid" id="dt_uid">
+          <ul id="dt_enc_list">
+            
+          </ul>
+          <input type="submit" value="Delete Selected" id="dt_submit_btn" style="display: none;">
+        </form>
+      </div>
     </div>
   </body>
 </html>
