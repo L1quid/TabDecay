@@ -60,6 +60,7 @@ function dt_enc_archives_init()
           anchor.target = "_blank";
           anchor.href = tab["url"];
           anchor.innerText = tab["title"];
+          anchor.title = tab["url"];
           li.appendChild(anchor);
           li.innerHTML = li.innerHTML + "<br />Archived: " + tab["created_at"];
           list.appendChild(li);
